@@ -2,7 +2,14 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
+use App\Events\ImageCreated;
+use App\Events\ImageDeleted;
+use App\Listeners\DeleteImageFromBigstock;
+use App\Listeners\DeleteImageFromDepositphotos;
+use App\Listeners\DeleteImageFromShutterstock;
+use App\Listeners\PutImageToBigstock;
+use App\Listeners\PutImageToDepositphotos;
+use App\Listeners\PutImageToShutterstock;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,6 +24,16 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        ImageCreated::class => [
+            PutImageToShutterstock::class,
+            PutImageToBigstock::class,
+            PutImageToDepositphotos::class,
+        ],
+        ImageDeleted::class => [
+            DeleteImageFromShutterstock::class,
+            DeleteImageFromBigstock::class,
+            DeleteImageFromDepositphotos::class,
         ],
     ];
 

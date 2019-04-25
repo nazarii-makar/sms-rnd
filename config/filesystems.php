@@ -64,6 +64,30 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'shutterstock' => [
+            'driver' => 'ftp',
+            'host' => env('SHUTTERSTOCK_FTP_HOST'),
+            'username' => env('SHUTTERSTOCK_FTP_USERNAME'),
+            'password' => env('SHUTTERSTOCK_FTP_PASSWORD'),
+            'root' => '/',
+        ],
+
+        'bigstock' => [
+            'driver' => 'ftp',
+            'host' => env('BIGSTOCK_FTP_HOST'),
+            'username' => env('BIGSTOCK_FTP_USERNAME'),
+            'password' => env('BIGSTOCK_FTP_PASSWORD'),
+            'root' => '/',
+        ],
+
+        'depositphotos' => [
+            'driver' => 'ftp',
+            'host' => env('DEPOSITPHOTOS_FTP_HOST'),
+            'username' => env('DEPOSITPHOTOS_FTP_USERNAME'),
+            'password' => env('DEPOSITPHOTOS_FTP_PASSWORD'),
+            'root' => '/',
+        ],
+
     ],
 
 ];
